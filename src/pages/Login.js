@@ -1,10 +1,15 @@
+import Base from "../components/Base";
+
 const Login = () => {
     return (
-        <div>
-           <h1>this is Login page !!</h1>
-           <p> Welcome to the Login page !!</p>
-
-        </div>
+        <Base>
+         
+          <div>
+             <h1>this is login page !!</h1>
+             <p>Welcome to the login page !!</p>
+            </div>
+  
+        </Base>
     );
 }
 

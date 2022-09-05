@@ -7,8 +7,11 @@ import { Button } from 'reactstrap';
 import { BrowserRouter,Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
+
 import About from   './pages/About';
+import CustomNavbar from './components/CustomNavbar';
+import Signup from './pages/Signup';
+import Services from './pages/Services';
 
 function App() {
   return (
@@ -19,8 +22,11 @@ function App() {
 
         <Route path='/' element= {<Home />} />
         <Route path='/login' element= {<Login />} />
-        <Route path='/signup' element= {<Signup />} />
+        <Route path='/singup' element= {<Signup />} />
+        
         <Route path='/about' element= {<About/>} />
+        <Route path='/service' element= {<Services/>} />
+        {/* <Route path='/customNavbar' element= {<CustomNavbar />} /> */}
 
       </Routes>
     
