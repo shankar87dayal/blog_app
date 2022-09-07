@@ -1,7 +1,68 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { CardBody, CardHeader, Container, Card, Form, FormGroup, Label, Input, Button, Row, Col, } from "reactstrap";
 import Base from "../components/Base";
 
 const Signup = () => {
+
+
+   
+
+
+
+    const [data, setData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        about: '',
+
+    })
+
+    useState({
+        errors:{},
+        isError:false
+    })
+
+    //  useEffect(()=>{
+    //     console.log(data);
+
+    //  },[data]) // use for show the data on console
+
+     //handle change
+    const handleChange =(event,property)=>{
+        // console.log("name change");
+        //     console.log(event.target.value);
+
+           //dynamic setting the values
+            setData({...data , [property]:event.target.value})
+           
+
+    }
+
+
+
+    //resetting the form
+    const resetData = () =>{
+        setData({
+            name: '',
+            email: '',
+            password: '',
+            bout: '',
+        })
+    }
+
+    //submit form
+    const submitForm = (event) =>{
+       event.preventDefault()
+
+        console.log(data);
+
+        //data validation
+
+        //call server api for sending the data 
+
+    }
+
     return (
         <Base>
         
@@ -11,6 +72,8 @@ const Signup = () => {
 
 
                <Row className="mt-4">
+
+                {JSON.stringify(data)}
                 
                 <Col sm={{size: 6, offset:3}}>
                 
@@ -28,7 +91,7 @@ const Signup = () => {
 
                         {/* creating form */}
 
-                        <Form>
+                        <Form onSubmit={submitForm}>
                                      {/* name field */}
                             <FormGroup>
 
@@ -37,6 +100,9 @@ const Signup = () => {
                                 type="text"
                                 placeholder="Enter here"
                                 id="name"
+                                onChange={(e)=>handleChange(e,'name')}
+                                value={data.name}
+
                                 />
                                 
 
@@ -50,6 +116,8 @@ const Signup = () => {
                                 type="email"
                                 placeholder="Enter here"
                                 id="email"
+                                onChange={(e)=>handleChange(e,'email')}
+                                value={data.email}
                                 />
                                 
 
@@ -63,6 +131,8 @@ const Signup = () => {
                                 type="password"
                                 placeholder="Enter here"
                                 id="password"
+                                onChange={(e)=>handleChange(e,'password')}
+                                value={data.password}
                                 />
                                 
 
@@ -77,6 +147,8 @@ const Signup = () => {
                                 placeholder="Enter here"
                                 id="about"
                                 style={{height:"100px"}}
+                                onChange={(e)=>handleChange(e,'about')}
+                                value ={data.about}
                                 />
                                 
 
@@ -86,7 +158,7 @@ const Signup = () => {
                                  {/* button */}
                             <Container className="text-center">
                                 <Button color="light" outline>Register</Button>
-                                <Button color="danger" className="ms-2" type="reset">Reset</Button>
+                                <Button onClick={resetData} color="danger" className="ms-2" type="reset">Reset</Button>
                             </Container>
                         </Form>
 
