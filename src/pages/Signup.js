@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { CardBody, CardHeader, Container, Card, Form, FormGroup, Label, Input, Button, Row, Col, } from "reactstrap";
 import Base from "../components/Base";
+import { signUp } from "../services/user-service";
 
 const Signup = () => {
 
@@ -47,7 +49,7 @@ const Signup = () => {
             name: '',
             email: '',
             password: '',
-            bout: '',
+            about: '',
         })
     }
 
@@ -60,8 +62,23 @@ const Signup = () => {
         //data validation
 
         //call server api for sending the data 
+        signUp(data).then((resp) =>{
+            console.log(resp);
+            console.log("success  log");
+            toast.success("User is register successfully !!")
+            setData({
+                name: '',
+                email: '',
+                password: '',
+                about: '',
+            })
+        }).catch((error) =>{
+            console.log(error);
+            console.log("Error log");
 
-    }
+        });
+
+    };
 
     return (
         <Base>
@@ -69,11 +86,11 @@ const Signup = () => {
 
             <Container>
 
-
+            {JSON.stringify(data)}
 
                <Row className="mt-4">
 
-                {JSON.stringify(data)}
+                
                 
                 <Col sm={{size: 6, offset:3}}>
                 
