@@ -7,11 +7,6 @@ import { signUp } from "../services/user-service";
 
 const Signup = () => {
 
-
-   
-
-
-
     const [data, setData] = useState({
         name: '',
         email: '',
